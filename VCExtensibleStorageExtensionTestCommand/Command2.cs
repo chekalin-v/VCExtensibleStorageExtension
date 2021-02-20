@@ -11,7 +11,7 @@ using VCExtensibleStorageExtension.ElementExtensions;
 
 namespace VCExtensibleStorageExtensionTestCommand
 {
-    [Transaction(TransactionMode.Automatic)]
+    [Transaction(TransactionMode.Manual)]
     public class Command2 : IExternalCommand
     {
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
