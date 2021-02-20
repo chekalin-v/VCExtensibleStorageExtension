@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package >
+  <metadata>
+    <id>Revit.ES.Extension</id>
+    <version>2020.0.7721.26684</version>
+    <title>Extensible Storage Extensions for Revit</title>
+    <authors>Victor Chekalin</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">MIT</license>
+    <projectUrl>https://github.com/chekalin-v/VCExtensibleStorageExtension</projectUrl>    
+    <description>Useful utility for easy work with Revit Extensible storage</description>    
+    <copyright>Copyright ©2021 Victor Chekalin</copyright>
+    <tags>Revit ExtensibleStorage</tags>
+	<dependencies>
+	  <group targetFramework=".NETFramework4.7.1" />
+	</dependencies>
+  </metadata>
+</package>
