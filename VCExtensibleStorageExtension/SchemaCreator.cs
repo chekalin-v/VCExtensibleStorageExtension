@@ -52,7 +52,7 @@ namespace VCExtensibleStorageExtension
                 schemaBuilder.SetWriteAccessLevel(schemaAttribute.WriteAccessLevel);
 
             if (!string.IsNullOrEmpty(schemaAttribute.VendorId))
-                schemaAttribute.VendorId = schemaAttribute.VendorId;
+                schemaBuilder.SetVendorId(schemaAttribute.VendorId);
 
             var properties = type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
 
