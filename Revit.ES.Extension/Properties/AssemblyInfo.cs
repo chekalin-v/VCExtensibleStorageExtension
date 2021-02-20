@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
@@ -9,8 +9,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("VCExtensibleStorageExtension")]
-[assembly: AssemblyCopyright("Copyright © Victor Chekalin 2012")]
+[assembly: AssemblyProduct("Revit.ES.Extension")]
+[assembly: AssemblyCopyright("Copyright � Victor Chekalin 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

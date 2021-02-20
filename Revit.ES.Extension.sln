@@ -1,11 +1,10 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCExtensibleStorageExtension", "VCExtensibleStorageExtension\VCExtensibleStorageExtension.csproj", "{2DEF625F-1B50-4AC3-8364-999F1861D471}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Revit.ES.Extension", "Revit.ES.Extension\Revit.ES.Extension.csproj", "{2DEF625F-1B50-4AC3-8364-999F1861D471}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VCExtensibleStorageExtensionTestCommand", "VCExtensibleStorageExtensionTestCommand\VCExtensibleStorageExtensionTestCommand.csproj", "{0949DEBE-12E7-4C38-9432-06490E022F86}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Revit.ES.Extension.TestCommand", "Revit.ES.ExtensionTestCommand\Revit.ES.Extension.TestCommand.csproj", "{0949DEBE-12E7-4C38-9432-06490E022F86}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

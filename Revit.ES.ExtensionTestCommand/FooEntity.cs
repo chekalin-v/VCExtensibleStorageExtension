@@ -1,12 +1,12 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using VCExtensibleStorageExtension;
-using VCExtensibleStorageExtension.Attributes;
+using Revit.ES.Extension;
+using Revit.ES.Extension.Attributes;
 using Autodesk.Revit.DB;
 
-namespace VCExtensibleStorageExtensionTestCommand
+namespace Revit.ES.ExtensionTestCommand
 {
     [Schema("675551F3-04D4-4A33-94CA-0C2E34B2A5BF", "FooEntity",
         Documentation = "The class I want to save in the project")]

@@ -1,5 +1,5 @@
-﻿/* 
- * Copyright 2012 © Victor Chekalin
+/* 
+ * Copyright 2012 � Victor Chekalin
  * 
  * THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY 
  * KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
@@ -12,9 +12,9 @@ using System;
 using System.Collections.Generic;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.ExtensibleStorage;
-using VCExtensibleStorageExtension.Attributes;
+using Revit.ES.Extension.Attributes;
 
-namespace VCExtensibleStorageExtension.ElementExtensions
+namespace Revit.ES.Extension.ElementExtensions
 {
     public static class RevitEntityElementExtension
     {        

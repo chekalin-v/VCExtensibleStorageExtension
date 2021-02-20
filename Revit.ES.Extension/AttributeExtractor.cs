@@ -11,7 +11,7 @@
 using System;
 using System.Reflection;
 
-namespace VCExtensibleStorageExtension
+namespace Revit.ES.Extension
 {
     /// <summary>
     /// Helper class which helps to find value if the TAttribute of a member info

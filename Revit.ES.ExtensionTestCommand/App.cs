@@ -9,7 +9,7 @@ using Autodesk.Revit.UI.Events;
 
 #endregion
 
-namespace VCExtensibleStorageExtensionTestCommand
+namespace Revit.ES.ExtensionTestCommand
 {
     class App : IExternalApplication
     {

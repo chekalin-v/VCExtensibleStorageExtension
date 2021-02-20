@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Autodesk.Revit.Attributes;
@@ -6,10 +6,10 @@ using Autodesk.Revit.DB;
 using Autodesk.Revit.DB.ExtensibleStorage;
 using Autodesk.Revit.UI;
 using Autodesk.Revit.UI.Selection;
-using VCExtensibleStorageExtensionTestCommand.Simple;
-using VCExtensibleStorageExtension.ElementExtensions;
+using Revit.ES.ExtensionTestCommand.Simple;
+using Revit.ES.Extension.ElementExtensions;
 
-namespace VCExtensibleStorageExtensionTestCommand
+namespace Revit.ES.ExtensionTestCommand
 {
     [Transaction(TransactionMode.Manual)]
     public class Command2 : IExternalCommand

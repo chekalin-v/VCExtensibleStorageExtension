@@ -1,7 +1,7 @@
-﻿using VCExtensibleStorageExtension;
-using VCExtensibleStorageExtension.Attributes;
+using Revit.ES.Extension;
+using Revit.ES.Extension.Attributes;
 
-namespace VCExtensibleStorageExtensionTestCommand.Simple
+namespace Revit.ES.ExtensionTestCommand.Simple
 {
 // Set schema Id and Schema name as class attributes
 [Schema("4E5B6F62-B8B3-4A2F-9B06-DDD953D4D4BB",

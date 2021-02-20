@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using VCExtensibleStorageExtension;
-using VCExtensibleStorageExtension.Attributes;
+using System.Collections.Generic;
+using Revit.ES.Extension;
+using Revit.ES.Extension.Attributes;
 using Autodesk.Revit.DB;
 
-namespace VCExtensibleStorageExtensionTestCommand
+namespace Revit.ES.ExtensionTestCommand
 {
     [Schema("0488C456-66B2-445F-817C-34C1A4DF4546",
         "TestEntitySchema",

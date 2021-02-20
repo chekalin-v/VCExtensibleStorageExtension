@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Command">
+    <Text>Revit.ES.Extension - TestCommand</Text>
+    <Description>Some description for Revit.ES.ExtensionTestCommand</Description>
+    <Assembly>.\VCExStorageExtensions\Revit.ES.ExtensionTestCommand.dll</Assembly>
+    <FullClassName>Revit.ES.ExtensionTestCommand.Command</FullClassName>
+    <ClientId>a7a4f5a4-d665-4bfc-8d8a-3b5468f1ea6f</ClientId>
+    <VendorId>TBC_</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+
+  <AddIn Type="Command">
+    <Text>Revit.ES.Extension - Select element</Text>
+    <Description>Some description for Revit.ES.ExtensionTestCommand</Description>
+    <Assembly>.\VCExStorageExtensions\Revit.ES.ExtensionTestCommand.dll</Assembly>
+    <FullClassName>Revit.ES.ExtensionTestCommand.Command2</FullClassName>
+    <ClientId>{35829384-B56A-4D85-86A0-A8E02608549A}</ClientId>
+    <VendorId>TBC_</VendorId>
+    <VendorDescription>The Building Coder, http://thebuildingcoder.typepad.com</VendorDescription>
+  </AddIn>
+
+</RevitAddIns>

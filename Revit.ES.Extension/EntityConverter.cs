@@ -14,11 +14,11 @@ using System.Linq;
 using System.Reflection;
 using Autodesk.Revit.DB.ExtensibleStorage;
 using Autodesk.Revit.DB;
-using VCExtensibleStorageExtension.Attributes;
+using Revit.ES.Extension.Attributes;
 using System.Collections.Generic;
-using VCExtensibleStorageExtension.ElementExtensions;
+using Revit.ES.Extension.ElementExtensions;
 
-namespace VCExtensibleStorageExtension
+namespace Revit.ES.Extension
 {
     class EntityConverter : IEntityConverter
     {

@@ -8,12 +8,12 @@ using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using VCExtensibleStorageExtension;
-using VCExtensibleStorageExtension.ElementExtensions;
+using Revit.ES.Extension;
+using Revit.ES.Extension.ElementExtensions;
 
 #endregion
 
-namespace VCExtensibleStorageExtensionTestCommand
+namespace Revit.ES.ExtensionTestCommand
 {
     [Transaction(TransactionMode.Manual)]
     public class Command : IExternalCommand

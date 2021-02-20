@@ -11,9 +11,9 @@
 using System;
 using System.Reflection;
 using Autodesk.Revit.DB.ExtensibleStorage;
-using VCExtensibleStorageExtension.Attributes;
+using Revit.ES.Extension.Attributes;
 
-namespace VCExtensibleStorageExtension
+namespace Revit.ES.Extension
 {
     /// <summary>
     /// Create an Autodesk Extensible storage schema from a type

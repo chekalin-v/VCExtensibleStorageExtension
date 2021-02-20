@@ -1,5 +1,5 @@
-﻿/* 
- * Copyright 2012 © Victor Chekalin
+/* 
+ * Copyright 2012 � Victor Chekalin
  * 
  * THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY 
  * KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
@@ -13,9 +13,9 @@ using System.Collections.Generic;
 using System.Reflection;
 using System.Text;
 using Autodesk.Revit.DB.ExtensibleStorage;
-using VCExtensibleStorageExtension.Attributes;
+using Revit.ES.Extension.Attributes;
 
-namespace VCExtensibleStorageExtension
+namespace Revit.ES.Extension
 {
     public interface IFieldFactory
     {
