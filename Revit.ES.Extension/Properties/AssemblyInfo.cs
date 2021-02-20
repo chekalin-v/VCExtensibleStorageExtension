@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Revit Extensible Storage Extensions")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Extensible Storage Extensions for Revit")]
+[assembly: AssemblyDescription("Useful utility for easy work with Revit Extensible storage")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Victor Chekalin")]
 [assembly: AssemblyProduct("Revit.ES.Extension")]
-[assembly: AssemblyCopyright("Copyright © Victor Chekalin 2012")]
+[assembly: AssemblyCopyright("Copyright © Victor Chekalin 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,15 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.1.0.0")]
-[assembly: AssemblyFileVersion("1.1.0.0")]
+#if REVIT2019
+[assembly: AssemblyVersion("2019.0.*")]
+#elif REVIT2020
+[assembly: AssemblyVersion("2020.0.*")]
+#elif REVIT2021
+[assembly: AssemblyVersion("2021.0.*")]
+#elif REVIT2022
+[assembly: AssemblyVersion("2022.0.*")]
+#elif REVIT2023
+[assembly: AssemblyVersion("2023.0.*")]
+#endif
+
