@@ -1,11 +1,11 @@
-/* 
- * Copyright 2012 © Victor Chekalin
- * 
- * THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY 
+/*
+ * Copyright 2012 ï¿½ Victor Chekalin
+ *
+ * THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY
  * KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
  * IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
  * PARTICULAR PURPOSE.
- * 
+ *
  */
 
 using System;
@@ -22,7 +22,7 @@ namespace VCExtensibleStorageExtension
 {
     class EntityConverter : IEntityConverter
     {
-        
+
         private readonly ISchemaCreator _schemaCreator;
 
         public EntityConverter(ISchemaCreator schemaCreator)
@@ -46,22 +46,22 @@ namespace VCExtensibleStorageExtension
 
             Entity entity = new Entity(schema);
 
-            /* Iterate all of the schema field and 
-             * get IRevitEntity object property value 
+            /* Iterate all of the schema field and
+             * get IRevitEntity object property value
              * for each field
              */
             var schemaFields = schema.ListFields();
             foreach (var field in schemaFields)
             {
-                /*Get the property of the IRevitEntity with the 
+                /*Get the property of the IRevitEntity with the
                  * same name as FieldName
                  */
 
                 var property = entityType.GetProperty(field.FieldName);
 
                 //Get the property value
-                dynamic propertyValue = property.GetValue(revitEntity, null);                                               
-                   
+                dynamic propertyValue = property.GetValue(revitEntity, null);
+
                 /*We don't need to write null value to
                  * the ExStorage.Entity
                  * So we just skip this property
@@ -74,8 +74,8 @@ namespace VCExtensibleStorageExtension
 
                 switch (field.ContainerType)
                 {
-                    case ContainerType.Simple:        
-               
+                    case ContainerType.Simple:
+
                         propertyValue = ConvertSimpleProperty(propertyValue, field);
 
                         if (field.UnitType == UnitType.UT_Undefined)
@@ -90,10 +90,10 @@ namespace VCExtensibleStorageExtension
                         }
 
                         break;
-                    case ContainerType.Array:    
-                   
-                        /* If we have a deal with null IList or with  
-                         * empty IList we must skip this field.                         
+                    case ContainerType.Array:
+
+                        /* If we have a deal with null IList or with
+                         * empty IList we must skip this field.
                          */
 
                         if (propertyValue.Count == 0)
@@ -102,11 +102,11 @@ namespace VCExtensibleStorageExtension
                         var convertedIListFieldValue =
                             ConvertIListProperty(propertyValue, field);
 
-                        /* convertedArrayFieldValue is an List<T> object.                        
-                         * Entity.Set method throws an exception if I do not pass 
-                         * an IList interface as value. 
+                        /* convertedArrayFieldValue is an List<T> object.
+                         * Entity.Set method throws an exception if I do not pass
+                         * an IList interface as value.
                          * Even if the type implements IList<T> interface
-                         * With this method which do nothing except takes a 
+                         * With this method which do nothing except takes a
                          * IList parameter instead FieldType, it works propoerly
                          */
 
@@ -138,9 +138,9 @@ namespace VCExtensibleStorageExtension
                         {
                             var firstCompatibleDUT = GetFirstCompatibleDUT(field);
 
-                            EntityExtension.SetWrapper(entity, 
-                                field, 
-                                convertedMapFieldValue, 
+                            EntityExtension.SetWrapper(entity,
+                                field,
+                                convertedMapFieldValue,
                                 firstCompatibleDUT);
                         }
                         break;
@@ -148,7 +148,7 @@ namespace VCExtensibleStorageExtension
                         throw new NotSupportedException("Unknown Field.ContainerType");
                 }
 
-                
+
             }
 
             return entity;
@@ -162,7 +162,7 @@ namespace VCExtensibleStorageExtension
             /* An ExStorage.Entity MAp field stores an IDictionary<,>
              * So, it is need to sure, that property value type
              * supports generic IDictionary<,> interface.
-             * As far as I create array field only if the property type 
+             * As far as I create array field only if the property type
              * implements IDictionary<,> in the SchemaCreateor, this condition is always
              * true.
              */
@@ -176,7 +176,7 @@ namespace VCExtensibleStorageExtension
                 throw new NotSupportedException("Unsupported type");
             }
 
-            /* ExStorage.Entity supports primitive generic types, described 
+            /* ExStorage.Entity supports primitive generic types, described
              * here
              * http://wikihelp.autodesk.com/Revit/enu/2013/Help/00006-API_Developer's_Guide/0135-Advanced135/0136-Storing_136/0141-Extensib141
              * And also generic type can be an ExStorage.Entity, i.e. IDictionary<T, Entity>.
@@ -197,7 +197,7 @@ namespace VCExtensibleStorageExtension
 
                 var mapArray =
                     Activator
-                    .CreateInstance(dictionaryType, new object[] {propertyValue.Count}) 
+                    .CreateInstance(dictionaryType, new object[] {propertyValue.Count})
                         as IDictionary;
 
                 foreach (var keyValuePair in propertyValue)
@@ -230,7 +230,7 @@ namespace VCExtensibleStorageExtension
 
             /* If field value type is Entity,
              * the Property value type is IRevitEntity type.
-             * So it is need to convert IRevitEntity to the 
+             * So it is need to convert IRevitEntity to the
              * ExStorageEntity
              */
             if (field.ValueType == typeof (Entity))
@@ -238,7 +238,7 @@ namespace VCExtensibleStorageExtension
                 propertyValue = Convert(propertyValue);
             }
             return propertyValue;
-        }       
+        }
 
         /// <summary>
         /// Convert IRevitEntity property of IList type
@@ -249,27 +249,27 @@ namespace VCExtensibleStorageExtension
         /// <returns></returns>
         private object ConvertIListProperty(dynamic propertyValue, Field field)
         {
-            Type propertyValueType = 
+            Type propertyValueType =
                 propertyValue.GetType();
 
             /* An ExStorage.Entity Array field stores an IList
              * So, it is need to sure, that property value type
              * supports generic IList<> interface.
-             * As far as I create array field only if the property type 
+             * As far as I create array field only if the property type
              * implements IList<> in the SchemaCreateor, this condition is always
              * true.
              */
 
             var implementIListInterface =
                             propertyValueType
-                                .GetInterfaces()                                
+                                .GetInterfaces()
                                 .Any(x => x.GetGenericTypeDefinition() == typeof(IList<>));
             if (!implementIListInterface)
             {
                 throw new NotSupportedException("Unsupported type");
             }
 
-            /* ExStorage.Entity supports primitive generic types, described 
+            /* ExStorage.Entity supports primitive generic types, described
              * here
              * http://wikihelp.autodesk.com/Revit/enu/2013/Help/00006-API_Developer's_Guide/0135-Advanced135/0136-Storing_136/0141-Extensib141
              * And also generic type can be an ExStorage.Entity, i.e. IList<Entity>.
@@ -326,10 +326,10 @@ namespace VCExtensibleStorageExtension
             Type entityType = typeof(Entity);
 
             /* Iterate all of the schema fields
-             * and set the IRevit entity property, with 
+             * and set the IRevit entity property, with
              * FieldName name, with value of fieldValue
              */
-            var schemaFields = schema.ListFields();            
+            var schemaFields = schema.ListFields();
             foreach (var field in schemaFields)
             {
                 // Get the property of the IRevitEntity class
@@ -341,17 +341,17 @@ namespace VCExtensibleStorageExtension
                 /*
                  * Get the field value of the entity
                  * I.e. call Entity.Get<FieldTypeValue>
-                 * As we don't know the FieldTypeValue at 
-                 * the compile time, we invoke the 
+                 * As we don't know the FieldTypeValue at
+                 * the compile time, we invoke the
                  * Entity.Get<> method via reflection
                  */
                 object entityValue = null;
                 switch (field.ContainerType)
                 {
                     case ContainerType.Simple:
-                        
-                        entityValue = 
-                            GetEntityFieldValue(entity, 
+
+                        entityValue =
+                            GetEntityFieldValue(entity,
                                 field,
                                 field.ValueType);
 
@@ -361,9 +361,16 @@ namespace VCExtensibleStorageExtension
                         }
 
                         if (entityValue is Entity)
-                        {                            
+                        {
+                          if (((Entity)entityValue).Schema != null)
+                          {
                             entityValue =
                                 Convert(property.PropertyType, entityValue as Entity);
+                          }
+                          else
+                          {
+                            continue;
+                          }
                         }
                         break;
                     case ContainerType.Array:
@@ -372,7 +379,7 @@ namespace VCExtensibleStorageExtension
                          * Call Entity.Get<FieldType>(Field field) method
                         */
                         var iListType = typeof (IList<>);
-                        var genericIlistType = iListType.MakeGenericType(field.ValueType);                                     
+                        var genericIlistType = iListType.MakeGenericType(field.ValueType);
 
                         /* Get the field value from entity.
                          * As Field.Container type is an Array,
@@ -397,7 +404,7 @@ namespace VCExtensibleStorageExtension
 
                         /* property type which implements IList<T> interface,
                          * may have constructor with capacity parameter.
-                         * If have, pass as capacity. If not - create 
+                         * If have, pass as capacity. If not - create
                          * instance with default constructor
                          */
 
@@ -416,17 +423,17 @@ namespace VCExtensibleStorageExtension
                                 Activator
                                     .CreateInstance(property.PropertyType) as IList;
                         }
-                        
+
 
                         /* if field.ValueType is Entity
-                         * We must convert all of the Entity 
+                         * We must convert all of the Entity
                          * to the IRevitEntity
                          * I.e. get IList<IRevitEntity> from
                          * IList<Entity>
                          */
                         if (field.ValueType == typeof(Entity))
                         {
-                                                        
+
                             /* Get the generic type of the IList
                              * it should be IRevitEntity.
                              * So, we convert an Entity to an IRevitEntity
@@ -437,11 +444,11 @@ namespace VCExtensibleStorageExtension
                             foreach (Entity listEntityValue in listEntityValues)
                             {
                                 var convertedEntity = Convert(iRevitEntityType,
-                                                              listEntityValue);                                    
+                                                              listEntityValue);
                                 listProperty.Add(convertedEntity);
                             }
 
-                            
+
                         }
                         else
                         {
@@ -461,7 +468,7 @@ namespace VCExtensibleStorageExtension
                         * Call Entity.Get<FieldType>(Field field) method
                        */
                         var iDicitonaryType = typeof(IDictionary<,>);
-                        var genericIDicitionaryType = 
+                        var genericIDicitionaryType =
                             iDicitonaryType.MakeGenericType(field.KeyType, field.ValueType);
 
                         /* Get the field value from entity.
@@ -501,14 +508,14 @@ namespace VCExtensibleStorageExtension
 
 
                         /* if field.ValueType is Entity
-                         * We must convert all of the Entity 
+                         * We must convert all of the Entity
                          * to the IRevitEntity
                          * I.e. get IDictionary<T, IRevitEntity> from
                          * IDictionary<T, Entity>
                          */
                         if (field.ValueType == typeof(Entity))
                         {
-                            
+
                             /* Get the generic type of the IList
                              * it should be IRevitEntity.
                              * So, we convert an Entity to an IRevitEntity
@@ -524,7 +531,7 @@ namespace VCExtensibleStorageExtension
                                 dictProperty.Add(keyValuePair.Key, convertedEntity);
                             }
 
-                            
+
                         }
                         else
                         {
@@ -540,7 +547,7 @@ namespace VCExtensibleStorageExtension
                 }
 
                 if (entityValue !=null)
-                    property.SetValue(revitEntity, entityValue, null);                
+                    property.SetValue(revitEntity, entityValue, null);
             }
 
             return revitEntity;
@@ -548,17 +555,17 @@ namespace VCExtensibleStorageExtension
 
         #endregion
 
-        private object GetEntityFieldValue(Entity entity, 
+        private object GetEntityFieldValue(Entity entity,
             Field field,
             Type fieldValueType)
         {
 
             /*
-             * When we save entity to an element and 
+             * When we save entity to an element and
              * entity has an SubEntity we should ommit
              * set Subentity. And there is a cse would happen
              * when there is no subschema loaded into the memory.
-             * In this case, Revit throws exception about 
+             * In this case, Revit throws exception about
              * "There is no Schema with id in memory"
              */
             if (field.SubSchemaGUID != Guid.Empty &&
@@ -592,7 +599,7 @@ namespace VCExtensibleStorageExtension
                     entityGetMethod
                         .MakeGenericMethod(fieldValueType);
 
-                entityValue = 
+                entityValue =
                     entityGetMethodGeneric
                         .Invoke(entity, new object[] {field, firstCompatibleDUT});
             }
