@@ -1,5 +1,5 @@
 /* 
- * Copyright 2012 � Victor Chekalin
+ * Copyright 2012 © Victor Chekalin
  * 
  * THIS CODE AND INFORMATION ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY 
  * KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
@@ -49,7 +49,7 @@ namespace VCExtensibleStorageExtension
                 schemaBuilder.SetReadAccessLevel(schemaAttribute.ReadAccessLevel);
 
             if (schemaAttribute.WriteAccessLevel != default(AccessLevel))
-                schemaBuilder.SetReadAccessLevel(schemaAttribute.WriteAccessLevel);
+                schemaBuilder.SetWriteAccessLevel(schemaAttribute.WriteAccessLevel);
 
             if (!string.IsNullOrEmpty(schemaAttribute.VendorId))
                 schemaBuilder.SetVendorId(schemaAttribute.VendorId);
